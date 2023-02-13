@@ -12,7 +12,7 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if (held):
-		position = get_global_mouse_position()
+		global_position = get_global_mouse_position()
 
 func _input(event):
 	if (event is InputEventMouseButton and mouse_in_bounds()):
@@ -24,8 +24,8 @@ func _input(event):
 			if (held):
 				origin = position
 			else:
-				var tween = create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_BOUNCE)
-				tween.tween_property(self, 'position', origin, 0.5)
+				var tween = create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_EXPO)
+				tween.tween_property(self, 'position', origin, 0.8)
 			
 	
 func mouse_in_bounds() -> bool:

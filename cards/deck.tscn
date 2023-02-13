@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://cikaxs5ncodkw"]
+
+[ext_resource type="Texture2D" uid="uid://dkni1insw48i7" path="res://sprites/card-back-sprite.png" id="1_17yg2"]
+
+[node name="Deck" type="TextureButton"]
+offset_right = 192.0
+offset_bottom = 256.0
+texture_normal = ExtResource("1_17yg2")
