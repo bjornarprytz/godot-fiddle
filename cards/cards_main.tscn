@@ -14,7 +14,7 @@ offset_right = 200.0
 offset_bottom = 641.0
 
 [node name="Hand" type="Node2D" parent="."]
-position = Vector2(229, 388)
+position = Vector2(303, 514)
 script = ExtResource("4_lmd3k")
 
 [connection signal="pressed" from="Deck" to="." method="_on_deck_pressed"]

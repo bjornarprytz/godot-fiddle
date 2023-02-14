@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://dqqi0niaynfdb"]
+
+[ext_resource type="Texture2D" uid="uid://chgubpy5j4un8" path="res://sprites/button.png" id="1_q0pca"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_j35ox"]
+radius = 25.02
+
+[node name="GraphNode" type="Node2D"]
+
+[node name="Sprite" type="TextureRect" parent="."]
+offset_left = -27.0
+offset_top = -27.0
+offset_right = 27.0
+offset_bottom = 27.0
+texture = ExtResource("1_q0pca")
+expand_mode = 1
+
+[node name="Area" type="Area2D" parent="."]
+position = Vector2(-27, -27)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area"]
+position = Vector2(27, 27)
+shape = SubResource("CircleShape2D_j35ox")

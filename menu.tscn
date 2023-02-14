@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://d35b211wic37c"]
+[gd_scene load_steps=4 format=3 uid="uid://cnxiourri7wk0"]
 
 [ext_resource type="Script" path="res://main-menu-control.gd" id="1_woxuk"]
-[ext_resource type="Script" path="res://Cards.gd" id="2_4x8mb"]
+[ext_resource type="Script" path="res://card-button.gd" id="2_ant5b"]
+[ext_resource type="Script" path="res://graph-button.gd" id="3_vo2yh"]
 
 [node name="MenuBackground" type="ColorRect"]
 anchors_preset = 15
@@ -27,4 +28,9 @@ grow_horizontal = 2
 [node name="Cards" type="Button" parent="Buttons"]
 layout_mode = 2
 text = "Cards"
-script = ExtResource("2_4x8mb")
+script = ExtResource("2_ant5b")
+
+[node name="Graph" type="Button" parent="Buttons"]
+layout_mode = 2
+text = "Graph"
+script = ExtResource("3_vo2yh")

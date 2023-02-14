@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://dl6hsqci1qqua"]
+
+[ext_resource type="Script" path="res://graph/graph-controller.gd" id="1_bre0x"]
+[ext_resource type="PackedScene" uid="uid://dqqi0niaynfdb" path="res://graph/graph_node.tscn" id="2_yhsw6"]
+
+[node name="Graph" type="Node2D"]
+script = ExtResource("1_bre0x")
+
+[node name="Nodes" type="Node" parent="."]
+
+[node name="Root" parent="Nodes" instance=ExtResource("2_yhsw6")]
+
+[node name="Edges" type="Node" parent="."]
