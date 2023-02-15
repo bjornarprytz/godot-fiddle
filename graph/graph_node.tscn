@@ -1,18 +1,21 @@
-[gd_scene load_steps=3 format=3 uid="uid://dqqi0niaynfdb"]
+[gd_scene load_steps=5 format=3 uid="uid://gyyqvyunyr0s"]
 
-[ext_resource type="Texture2D" uid="uid://chgubpy5j4un8" path="res://sprites/button.png" id="1_q0pca"]
+[ext_resource type="Script" path="res://graph/graph_node.gd" id="1_juq4d"]
+[ext_resource type="Texture2D" uid="uid://cyovldkabikwl" path="res://sprites/circle.png" id="2_d0s4i"]
+[ext_resource type="Texture2D" uid="uid://u0j2w16hxkac" path="res://sprites/star.png" id="3_l1e0w"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_j35ox"]
-radius = 25.02
+[sub_resource type="CircleShape2D" id="CircleShape2D_5jnyj"]
+radius = 27.0185
 
 [node name="GraphNode" type="Node2D"]
+script = ExtResource("1_juq4d")
 
 [node name="Sprite" type="TextureRect" parent="."]
 offset_left = -27.0
 offset_top = -27.0
 offset_right = 27.0
 offset_bottom = 27.0
-texture = ExtResource("1_q0pca")
+texture = ExtResource("2_d0s4i")
 expand_mode = 1
 
 [node name="Area" type="Area2D" parent="."]
@@ -20,4 +23,26 @@ position = Vector2(-27, -27)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area"]
 position = Vector2(27, 27)
-shape = SubResource("CircleShape2D_j35ox")
+shape = SubResource("CircleShape2D_5jnyj")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 32
+lifetime = 1.5
+one_shot = true
+explosiveness = 0.9
+lifetime_randomness = 0.6
+texture = ExtResource("3_l1e0w")
+emission_shape = 1
+emission_sphere_radius = 1.0
+spread = 180.0
+gravity = Vector2(0, 150)
+initial_velocity_min = 104.65
+initial_velocity_max = 174.42
+angular_velocity_min = -310.47
+angular_velocity_max = 257.53
+scale_amount_min = 0.01
+scale_amount_max = 0.2
+color = Color(0.164706, 1, 0.376471, 1)
+hue_variation_min = -1.0
+hue_variation_max = 1.0

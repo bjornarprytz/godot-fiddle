@@ -1,3 +1,6 @@
-[gd_scene format=3 uid="uid://sfmbkesuvmmg"]
+[gd_scene load_steps=2 format=3 uid="uid://sfmbkesuvmmg"]
+
+[ext_resource type="Script" path="res://graph/graph-edge.gd" id="1_mx1ve"]
 
 [node name="graph-edge" type="Line2D"]
+script = ExtResource("1_mx1ve")

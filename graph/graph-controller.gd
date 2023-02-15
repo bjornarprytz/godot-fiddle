@@ -1,21 +1,16 @@
 extends Node2D
 
-const screen_edge_margin = 30
+const nNodes = 10
+const screen_edge_margin = 100
 
 var edge_maker = preload("res://graph/graph-edge.tscn")
 var node_maker = preload("res://graph/graph_node.tscn")
 
 
 func _enter_tree():
-	
-	var timer = get_tree().create_timer(1.0)
-	while (true):
+	for i in range(nNodes):
 		spawn_node()
-		await timer.timeout
-		timer = get_tree().create_timer(1.0)
-		
-	
-	print ("done!")
+		await get_tree().create_timer(0.1).timeout
 
 func _input(event):
 	if (event is InputEventMouseButton and event.is_pressed()):
@@ -35,7 +30,7 @@ func spawn_edge():
 	if (nodeCount < 2):
 		return
 	
-	var edge = edge_maker.instantiate() as Line2D 
+	var edge = edge_maker.instantiate() as EdgeLord 
 	
 	var sourceIdx = randi_range(0, nodeCount-1)
 	var destIdx = randi_range(0, nodeCount-1)
@@ -43,10 +38,18 @@ func spawn_edge():
 	if (sourceIdx == destIdx):
 		sourceIdx = (destIdx + 1) % nodeCount
 		
-	var source = $Nodes.get_child(sourceIdx)
-	var destination = $Nodes.get_child(destIdx)
+	var source = $Nodes.get_child(sourceIdx) as GNode
+	var destination = $Nodes.get_child(destIdx) as GNode
+	
+	if (source.neighbours.find(destination) != -1):
+		print("Already neighbours!")
+		return
+	
+	source.neighbours.append(destination)
+	destination.neighbours.append(source)
+	
 	
 	$Edges.add_child(edge)
-	edge.add_point(source.position)
-	edge.add_point(destination.position)
+	edge.go(source, destination)
+	
 	
