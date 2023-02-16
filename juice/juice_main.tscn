@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://nsfghohc4b8"]
+
+[ext_resource type="Script" path="res://juice/juice_main.gd" id="1_i78dq"]
+[ext_resource type="FontFile" uid="uid://cai6lldev21qc" path="res://fonts/PressStart2P/PressStart2P-Regular.ttf" id="1_jbjx7"]
+[ext_resource type="PackedScene" uid="uid://yb2ldm2p046d" path="res://juice/player.tscn" id="2_xs6sg"]
+
+[sub_resource type="Theme" id="Theme_c0lml"]
+default_font = ExtResource("1_jbjx7")
+default_font_size = 64
+
+[node name="juice" type="Node2D"]
+script = ExtResource("1_i78dq")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+modulate = Color(1, 1, 1, 0.223529)
+offset_left = 53.0
+offset_top = 24.0
+offset_right = 1110.0
+offset_bottom = 426.0
+theme = SubResource("Theme_c0lml")
+text = "- Health bars
+- Particles
+- Enemies
+- Lighting
+- Floating text (damage)"
+
+[node name="Player" parent="." instance=ExtResource("2_xs6sg")]
+position = Vector2(600, 600)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 0

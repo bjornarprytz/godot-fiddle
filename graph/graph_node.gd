@@ -3,7 +3,7 @@ class_name GNode
 
 var neighbours : Array[GNode]  = []
 
-func pow():
+func boom():
 	$CPUParticles2D.emitting = true;
 	hey()
 	

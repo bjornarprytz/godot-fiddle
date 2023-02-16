@@ -1,8 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://cnxiourri7wk0"]
+[gd_scene load_steps=2 format=3 uid="uid://cnxiourri7wk0"]
 
 [ext_resource type="Script" path="res://main-menu-control.gd" id="1_woxuk"]
-[ext_resource type="Script" path="res://card-button.gd" id="2_ant5b"]
-[ext_resource type="Script" path="res://graph-button.gd" id="3_vo2yh"]
 
 [node name="MenuBackground" type="ColorRect"]
 anchors_preset = 15
@@ -28,9 +26,15 @@ grow_horizontal = 2
 [node name="Cards" type="Button" parent="Buttons"]
 layout_mode = 2
 text = "Cards"
-script = ExtResource("2_ant5b")
 
 [node name="Graph" type="Button" parent="Buttons"]
 layout_mode = 2
 text = "Graph"
-script = ExtResource("3_vo2yh")
+
+[node name="Juice" type="Button" parent="Buttons"]
+layout_mode = 2
+text = "Juice"
+
+[connection signal="pressed" from="Buttons/Cards" to="." method="_on_cards_pressed"]
+[connection signal="pressed" from="Buttons/Graph" to="." method="_on_graph_pressed"]
+[connection signal="pressed" from="Buttons/Juice" to="." method="_on_juice_pressed"]

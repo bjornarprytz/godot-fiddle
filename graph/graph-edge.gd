@@ -17,5 +17,5 @@ func go(source: GNode, destination: GNode):
 	var p = points[1]
 	var tween = create_tween().set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_EXPO)
 	tween.tween_property(self, 'target', destination.position, 1.5)
-	tween.tween_callback(destination.pow)
+	tween.tween_callback(destination.boom)
 	
