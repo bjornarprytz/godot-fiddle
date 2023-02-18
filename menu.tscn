@@ -35,6 +35,11 @@ text = "Graph"
 layout_mode = 2
 text = "Juice"
 
+[node name="Cross-language" type="Button" parent="Buttons"]
+layout_mode = 2
+text = "Cross-language"
+
 [connection signal="pressed" from="Buttons/Cards" to="." method="_on_cards_pressed"]
 [connection signal="pressed" from="Buttons/Graph" to="." method="_on_graph_pressed"]
 [connection signal="pressed" from="Buttons/Juice" to="." method="_on_juice_pressed"]
+[connection signal="pressed" from="Buttons/Cross-language" to="." method="_on_crosslanguage_pressed"]

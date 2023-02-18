@@ -4,13 +4,12 @@ var menu_scene = preload("res://menu.tscn")
 
 var tween
 
-func _enter_tree():
-	await get_tree().create_timer(1.0).timeout
+func _ready():
 	$Vignette.play()
 	title_drop()
 
 func title_drop():
-	var target = Vector2($Title.position.x, get_viewport_rect().size.y / 2.0)
+	var target = get_viewport_rect().size.y / 2.0
 	
 	print("Target: ", target)
 	
@@ -20,7 +19,7 @@ func title_drop():
 	tween.set_ease(Tween.EASE_OUT)
 	tween.set_trans(Tween.TRANS_ELASTIC)
 	
-	tween.tween_property($Title, 'position', target , 7.7)
+	tween.tween_property($Title, 'position:y', target , 7.7)
 	tween.tween_callback(load_next)
 	
 	

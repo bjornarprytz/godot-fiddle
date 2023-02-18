@@ -16,16 +16,15 @@ modulate = Color(1, 1, 1, 0.223529)
 offset_left = 53.0
 offset_top = 24.0
 offset_right = 1110.0
-offset_bottom = 426.0
+offset_bottom = 308.0
 theme = SubResource("Theme_c0lml")
-text = "- Health bars
-- Particles
-- Enemies
-- Lighting
-- Floating text (damage)"
+text = "- Floating text (damage)
+- Lighting"
 
 [node name="Player" parent="." instance=ExtResource("2_xs6sg")]
 position = Vector2(600, 600)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 anchor_mode = 0
+
+[node name="Enemies" type="Node" parent="."]

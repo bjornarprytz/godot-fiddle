@@ -2,11 +2,7 @@ extends ColorRect
 
 var tween
 
-var card_scene = preload("res://cards/cards_main.tscn")
-var graph_scene = preload("res://graph/graph_main.tscn")
-var juice_scene = preload("res://juice/juice_main.tscn")
-
-func _enter_tree():
+func _ready():
 	var targetColor = Color.from_string("5384f1", Color.WHITE)
 	
 	# https://easings.net/
@@ -23,10 +19,13 @@ func _enter_tree():
 
 
 func _on_cards_pressed():
-	get_tree().change_scene_to_packed(card_scene)
+	get_tree().change_scene_to_file("res://cards/cards_main.tscn")
 
 func _on_graph_pressed():
-	get_tree().change_scene_to_packed(graph_scene)
+	get_tree().change_scene_to_file("res://graph/graph_main.tscn")
 
 func _on_juice_pressed():
-	get_tree().change_scene_to_packed(juice_scene)
+	get_tree().change_scene_to_file("res://juice/juice_main.tscn")
+
+func _on_crosslanguage_pressed():
+	get_tree().change_scene_to_file("res://cross_language/cross_language_main.tscn")
