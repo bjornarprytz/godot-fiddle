@@ -29,3 +29,6 @@ func _on_juice_pressed():
 
 func _on_crosslanguage_pressed():
 	get_tree().change_scene_to_file("res://cross_language/cross_language_main.tscn")
+
+func _on_draft_pressed():
+	get_tree().change_scene_to_file("res://draft/draft_main.tscn")

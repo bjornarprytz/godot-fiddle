@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://cpuvef7noi4kl"]
+
+[ext_resource type="Texture2D" uid="uid://d38yp6axk1lef" path="res://sprites/point-light.png" id="1_renn7"]
+[ext_resource type="Script" path="res://juice/explosion_flash.gd" id="2_8tr4l"]
+
+[node name="Light" type="PointLight2D"]
+energy = 0.3
+texture = ExtResource("1_renn7")
+script = ExtResource("2_8tr4l")

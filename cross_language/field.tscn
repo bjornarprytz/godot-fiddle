@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://dawj2f1bue7hl"]
+
+[ext_resource type="Script" path="res://cross_language/tic-tac-toe-field.gd" id="1_umoua"]
+
+[node name="Button" type="Button"]
+offset_right = 35.0
+offset_bottom = 35.0
+script = ExtResource("1_umoua")

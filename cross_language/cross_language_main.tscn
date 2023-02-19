@@ -1,20 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://bryhf1bpmok7b"]
+[gd_scene load_steps=2 format=3 uid="uid://bryhf1bpmok7b"]
 
-[ext_resource type="FontFile" uid="uid://cai6lldev21qc" path="res://fonts/PressStart2P/PressStart2P-Regular.ttf" id="1_3ww1e"]
-
-[sub_resource type="Theme" id="Theme_i5jms"]
-default_font = ExtResource("1_3ww1e")
-default_font_size = 24
+[ext_resource type="PackedScene" uid="uid://dc832q7gwel3u" path="res://cross_language/board.tscn" id="2_rxlui"]
 
 [node name="cross_language_main" type="Node2D"]
 
-[node name="RichTextLabel" type="RichTextLabel" parent="."]
-offset_left = 289.0
-offset_top = 134.0
-offset_right = 820.0
-offset_bottom = 414.0
-theme = SubResource("Theme_i5jms")
-text = "- Game State backend
-- Tic Tac Toe
-- Turn Order
-- Field State update"
+[node name="Board" parent="." instance=ExtResource("2_rxlui")]
+position = Vector2(276, 45)
+scale = Vector2(5, 5)

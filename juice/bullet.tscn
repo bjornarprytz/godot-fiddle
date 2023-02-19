@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://eref3hfng8eb"]
+[gd_scene load_steps=4 format=3 uid="uid://eref3hfng8eb"]
 
 [ext_resource type="Script" path="res://juice/bullet.gd" id="1_vsjdl"]
+[ext_resource type="PackedScene" uid="uid://c133u2no26bpb" path="res://juice/light_source.tscn" id="2_0i1os"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1gnva"]
 size = Vector2(4, 4)
@@ -38,5 +39,8 @@ gravity = Vector2(0, 0)
 initial_velocity_min = 40.0
 initial_velocity_max = 120.0
 color = Color(1, 0.227451, 1, 1)
+
+[node name="Light" parent="." instance=ExtResource("2_0i1os")]
+scale = Vector2(0.2, 0.2)
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

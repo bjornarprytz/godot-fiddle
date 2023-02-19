@@ -4,6 +4,8 @@ class_name Bullet
 const speed = 800.0
 var damage : float
 
+var flash_spawner = preload("res://juice/explosion_flash.tscn")
+
 func _physics_process(delta):
 	translate(-transform.y * speed * delta)
 	
@@ -12,7 +14,9 @@ func _physics_process(delta):
 
 func _on_area_2d_area_entered(area):
 	$Explotion.restart()
-	$ColorRect2.visible = false
-	await get_tree().create_timer(2.0).timeout
-	queue_free()
+	
+	var flash = flash_spawner.instantiate() as Node2D
+	
+	add_sibling(flash)
+	flash.global_position = global_position
 	

@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://xb07n43gk63g"]
+
+[ext_resource type="FontFile" uid="uid://cai6lldev21qc" path="res://fonts/PressStart2P/PressStart2P-Regular.ttf" id="1_86f7x"]
+
+[sub_resource type="Theme" id="Theme_d2aje"]
+default_font = ExtResource("1_86f7x")
+default_font_size = 24
+
+[node name="draft_main" type="Node2D"]
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+offset_left = 142.0
+offset_top = 96.0
+offset_right = 1058.0
+offset_bottom = 495.0
+theme = SubResource("Theme_d2aje")
+text = "- Pick 1 card among 3
+- Sequential
+- End up with deck"

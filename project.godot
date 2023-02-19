@@ -12,7 +12,11 @@ config_version=5
 
 config/name="Fiddle"
 run/main_scene="res://main.tscn"
-config/features=PackedStringArray("4.0")
+config/features=PackedStringArray("4.0", "C#")
+
+[dotnet]
+
+project/assembly_name="Fiddle"
 
 [gui]
 

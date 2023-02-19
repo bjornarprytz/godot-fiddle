@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://c133u2no26bpb"]
+
+[ext_resource type="Texture2D" uid="uid://d38yp6axk1lef" path="res://sprites/point-light.png" id="1_kieuk"]
+
+[node name="Light" type="PointLight2D"]
+energy = 0.3
+texture = ExtResource("1_kieuk")
