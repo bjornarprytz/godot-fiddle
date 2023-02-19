@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://bdo5h2elp737q"]
+
+[ext_resource type="Script" path="res://draft/picks.gd" id="1_714tf"]
+
+[node name="Picks" type="Node2D"]
+script = ExtResource("1_714tf")
+
+[node name="Pick1" type="Node2D" parent="."]
+position = Vector2(183, 281)
+
+[node name="Pick2" type="Node2D" parent="."]
+position = Vector2(443, 281)
+
+[node name="Pick3" type="Node2D" parent="."]
+position = Vector2(718, 281)

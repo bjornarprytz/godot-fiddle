@@ -1,5 +1,5 @@
 extends Node2D
-
+class_name Card
 
 var held = false
 var origin: Vector2

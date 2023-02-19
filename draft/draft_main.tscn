@@ -1,19 +1,31 @@
-[gd_scene load_steps=3 format=3 uid="uid://xb07n43gk63g"]
+[gd_scene load_steps=6 format=3 uid="uid://xb07n43gk63g"]
 
 [ext_resource type="FontFile" uid="uid://cai6lldev21qc" path="res://fonts/PressStart2P/PressStart2P-Regular.ttf" id="1_86f7x"]
+[ext_resource type="Script" path="res://draft/draft-control.gd" id="1_v2523"]
+[ext_resource type="PackedScene" uid="uid://bdo5h2elp737q" path="res://draft/picks.tscn" id="3_g3six"]
+[ext_resource type="PackedScene" uid="uid://bnl5nrml8gxak" path="res://draft/deck.tscn" id="4_f82cb"]
 
 [sub_resource type="Theme" id="Theme_d2aje"]
 default_font = ExtResource("1_86f7x")
 default_font_size = 24
 
 [node name="draft_main" type="Node2D"]
+script = ExtResource("1_v2523")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
-offset_left = 142.0
-offset_top = 96.0
-offset_right = 1058.0
-offset_bottom = 495.0
+offset_left = 100.0
+offset_top = 58.0
+offset_right = 1016.0
+offset_bottom = 457.0
 theme = SubResource("Theme_d2aje")
-text = "- Pick 1 card among 3
-- Sequential
-- End up with deck"
+text = "- Backend in C#
+- End up with deck
+- User feedback (hover and glow)
+- Card state machine (refactor DraftCard and CardFront, etc.)"
+
+[node name="Picks" parent="." instance=ExtResource("3_g3six")]
+
+[node name="Deck" parent="." instance=ExtResource("4_f82cb")]
+position = Vector2(1090, 32)
+
+[connection signal="card_picked" from="Picks" to="." method="_on_picks_card_picked"]

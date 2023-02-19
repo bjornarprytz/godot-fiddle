@@ -7,7 +7,7 @@ var edge_maker = preload("res://graph/graph-edge.tscn")
 var node_maker = preload("res://graph/graph_node.tscn")
 
 
-func _enter_tree():
+func _ready():
 	for i in range(nNodes):
 		spawn_node()
 		await get_tree().create_timer(0.1).timeout
