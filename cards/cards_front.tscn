@@ -1,10 +1,24 @@
-[gd_scene load_steps=3 format=3 uid="uid://k6bi5cjydu13"]
+[gd_scene load_steps=6 format=3 uid="uid://k6bi5cjydu13"]
 
 [ext_resource type="Script" path="res://cards/card.gd" id="1_wy6bi"]
 [ext_resource type="Texture2D" uid="uid://cl6v0cs4qp18m" path="res://sprites/card-sprite.png" id="2_xrln3"]
+[ext_resource type="Script" path="res://cards/states/state-machine.gd" id="3_8voph"]
+[ext_resource type="Script" path="res://cards/states/idle.gd" id="4_xwwj3"]
+[ext_resource type="Script" path="res://cards/states/held.gd" id="5_xr2xf"]
 
-[node name="Node2D" type="Node2D"]
+[node name="Card" type="Node2D"]
 script = ExtResource("1_wy6bi")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_xrln3")
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("_card")]
+script = ExtResource("3_8voph")
+_initial_state = NodePath("Idle")
+_card = NodePath("..")
+
+[node name="Idle" type="Node" parent="StateMachine"]
+script = ExtResource("4_xwwj3")
+
+[node name="Held" type="Node" parent="StateMachine"]
+script = ExtResource("5_xr2xf")
