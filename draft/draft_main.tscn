@@ -21,7 +21,7 @@ theme = SubResource("Theme_d2aje")
 text = "- Backend in C#
 - End up with deck
 - User feedback (hover and glow)
-- Card state machine (refactor DraftCard and CardFront, etc.)"
+- Card state machine"
 
 [node name="Picks" parent="." instance=ExtResource("3_g3six")]
 

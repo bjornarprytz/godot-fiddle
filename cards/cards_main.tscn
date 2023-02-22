@@ -18,4 +18,3 @@ position = Vector2(303, 514)
 script = ExtResource("4_lmd3k")
 
 [connection signal="pressed" from="Deck" to="." method="_on_deck_pressed"]
-[connection signal="child_entered_tree" from="Hand" to="Hand" method="_on_child_entered_tree"]
