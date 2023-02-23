@@ -3,6 +3,9 @@ class_name DraftCard
 
 signal drafted(card :DraftCard)
 
+var outline_shader_material = preload("res://shader/outline_material.tres")
+var dissolve_shader_material = preload("res://shader/dissolve_material.tres")
+
 var held = false
 var origin: Vector2
 
@@ -16,9 +19,22 @@ func _input(event):
 		drafted.emit(self)
 	
 func mouse_in_bounds() -> bool:
-	var sprite_rect = $Sprite2D.get_rect()
+	var sprite_rect = $Sprite.get_rect()
 	var pos = to_global(sprite_rect.position)
 	
 	var ref_rect = Rect2(pos, sprite_rect.size)
 	
 	return ref_rect.has_point(get_global_mouse_position())
+
+func dissolve():
+	$Sprite.material = dissolve_shader_material
+	
+	await get_tree().create_timer(1.0).timeout
+	queue_free()
+
+func _on_area_2d_mouse_entered():
+	$Sprite.material = outline_shader_material
+
+func _on_area_2d_mouse_exited():
+	$Sprite.material = null
+

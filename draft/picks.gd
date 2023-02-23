@@ -17,11 +17,11 @@ func _process(delta):
 
 func clear_picks():
 	for c in $Pick1.get_children():
-		c.queue_free()
+		c.dissolve()
 	for c in $Pick2.get_children():
-		c.queue_free()
+		c.dissolve()
 	for c in $Pick3.get_children():
-			c.queue_free()
+		c.dissolve()
 			
 func load_picks():
 	_load_card($Pick1)
