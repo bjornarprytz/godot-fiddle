@@ -1,11 +1,10 @@
 shader_type canvas_item;
 
 uniform sampler2D noise_tex : source_color;
+uniform float dissolveState: hint_range(0.0, 1.0) = 0.0;
 
 void fragment()
-{
-	float dissolveState = sin(TIME);
-	
+{	
 	vec4 textureColor = texture(TEXTURE, UV);
 	float brightness = texture(noise_tex, UV).r;
 	

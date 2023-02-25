@@ -22,7 +22,9 @@ func clear_picks():
 		c.dissolve()
 	for c in $Pick3.get_children():
 		c.dissolve()
-			
+	
+	
+	
 func load_picks():
 	_load_card($Pick1)
 	await get_tree().create_timer(0.5).timeout
@@ -36,11 +38,11 @@ func _load_card(target: Node2D):
 	target.add_child(card)
 	card.global_position = start_pos
 	
-	card.drafted.connect(_card_picked)
+	card.drafted.connect(_card_picked, CONNECT_ONE_SHOT)
 	
 	var tween = create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_BACK)
 	
-	tween.tween_property(card, 'position', Vector2(0,0), 1.0)
+	await tween.tween_property(card, 'position', Vector2(0,0), 1.0)
 
 
 func _card_picked(card:DraftCard):
