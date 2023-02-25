@@ -18,8 +18,10 @@ func _process(delta):
 func clear_picks():
 	for c in $Pick1.get_children():
 		c.dissolve()
+	await get_tree().create_timer(randf_range(0.1, 0.3)).timeout
 	for c in $Pick2.get_children():
 		c.dissolve()
+	await get_tree().create_timer(randf_range(0.1, 0.3)).timeout
 	for c in $Pick3.get_children():
 		c.dissolve()
 	
@@ -42,7 +44,7 @@ func _load_card(target: Node2D):
 	
 	var tween = create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_BACK)
 	
-	await tween.tween_property(card, 'position', Vector2(0,0), 1.0)
+	await tween.tween_property(card, 'position', Vector2(0,0), 1.0).finished
 
 
 func _card_picked(card:DraftCard):

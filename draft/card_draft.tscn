@@ -1,16 +1,17 @@
-[gd_scene load_steps=4 format=3 uid="uid://b4xfqkorddqs7"]
+[gd_scene load_steps=5 format=3 uid="uid://b4xfqkorddqs7"]
 
 [ext_resource type="Script" path="res://draft/draft-card.gd" id="1_ivw1d"]
+[ext_resource type="Material" uid="uid://b7dp1srpo4dp4" path="res://shader/dissolve_material.tres" id="2_dmvfe"]
 [ext_resource type="Texture2D" uid="uid://dbnabhthp20ka" path="res://sprites/card-sprite.png" id="2_e58os"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q2qpe"]
 size = Vector2(184, 248)
 
 [node name="Node2D" type="Node2D"]
-position = Vector2(192, 256)
 script = ExtResource("1_ivw1d")
 
 [node name="Sprite" type="Sprite2D" parent="."]
+material = ExtResource("2_dmvfe")
 texture = ExtResource("2_e58os")
 
 [node name="Area2D" type="Area2D" parent="."]
