@@ -1,0 +1,40 @@
+[gd_scene load_steps=7 format=3 uid="uid://blavv4y4d5qob"]
+
+[ext_resource type="Script" path="res://cards/card.gd" id="1_5ulfp"]
+[ext_resource type="Texture2D" uid="uid://dbnabhthp20ka" path="res://sprites/card-sprite.png" id="2_vxoc3"]
+[ext_resource type="FontFile" uid="uid://cai6lldev21qc" path="res://fonts/PressStart2P/PressStart2P-Regular.ttf" id="3_s63a7"]
+[ext_resource type="Script" path="res://fsm/state-machine.gd" id="4_q76kg"]
+
+[sub_resource type="Theme" id="Theme_g1888"]
+default_font = ExtResource("3_s63a7")
+default_font_size = 16
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dq8ai"]
+size = Vector2(184, 248)
+
+[node name="Card" type="Node2D"]
+script = ExtResource("1_5ulfp")
+
+[node name="Frame" type="Sprite2D" parent="."]
+texture = ExtResource("2_vxoc3")
+
+[node name="Title" type="RichTextLabel" parent="."]
+offset_left = -75.0
+offset_top = -120.0
+offset_right = 78.0
+offset_bottom = -102.0
+theme = SubResource("Theme_g1888")
+theme_override_colors/default_color = Color(0.560784, 0.337255, 0.231373, 1)
+text = "Name"
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("_target_node")]
+script = ExtResource("4_q76kg")
+_target_node = NodePath("..")
+
+[node name="Interaction" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interaction"]
+shape = SubResource("RectangleShape2D_dq8ai")
+
+[connection signal="mouse_entered" from="Interaction" to="." method="_on_interaction_mouse_entered"]
+[connection signal="mouse_exited" from="Interaction" to="." method="_on_interaction_mouse_exited"]

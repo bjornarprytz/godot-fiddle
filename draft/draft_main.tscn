@@ -19,9 +19,7 @@ offset_right = 958.0
 offset_bottom = 263.0
 theme = SubResource("Theme_d2aje")
 text = "- Backend in C#
-- End up with deck
-- User feedback (hover and glow)
-- Card state machine"
+- End up with deck"
 
 [node name="Picks" parent="." instance=ExtResource("3_g3six")]
 

@@ -27,9 +27,7 @@ func mouse_in_bounds() -> bool:
 	return ref_rect.has_point(get_global_mouse_position())
 
 func dissolve():
-	var tween = create_tween().set_trans(Tween.TRANS_LINEAR)
-	tween.tween_property($Sprite, "material:shader_parameter/dissolveState", 1.0, randf_range(0.7, 1.2))
-	await tween.tween_callback(queue_free).finished
+	
 	
 func _on_area_2d_mouse_entered():
 	#$Sprite.material = outline_shader_material

@@ -11,7 +11,7 @@ func _process(delta):
 	pass
 
 
-func add_card(card: DraftCard):
+func add_card(card: Card):
 	
 	card.reparent($Pile)
 	

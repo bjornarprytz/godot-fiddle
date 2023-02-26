@@ -1,23 +1,20 @@
-[gd_scene load_steps=5 format=3 uid="uid://b4xfqkorddqs7"]
+[gd_scene load_steps=5 format=3 uid="uid://ywqtf0g33x7t"]
 
-[ext_resource type="Script" path="res://draft/draft-card.gd" id="1_ivw1d"]
-[ext_resource type="Material" uid="uid://b7dp1srpo4dp4" path="res://shader/dissolve_material.tres" id="2_dmvfe"]
-[ext_resource type="Texture2D" uid="uid://dbnabhthp20ka" path="res://sprites/card-sprite.png" id="2_e58os"]
+[ext_resource type="PackedScene" uid="uid://blavv4y4d5qob" path="res://cards/card_base.tscn" id="1_ku3jv"]
+[ext_resource type="Script" path="res://draft/states/dissolving.gd" id="3_qo4js"]
+[ext_resource type="Script" path="res://draft/states/draftable.gd" id="4_b22op"]
+[ext_resource type="Script" path="res://fsm/state.gd" id="4_miqy1"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_q2qpe"]
-size = Vector2(184, 248)
+[node name="Card" instance=ExtResource("1_ku3jv")]
 
-[node name="Node2D" type="Node2D"]
-script = ExtResource("1_ivw1d")
+[node name="StateMachine" parent="." index="2"]
+_initial_state = NodePath("Draftable")
 
-[node name="Sprite" type="Sprite2D" parent="."]
-material = ExtResource("2_dmvfe")
-texture = ExtResource("2_e58os")
+[node name="Dissolving" type="Node" parent="StateMachine" index="0"]
+script = ExtResource("3_qo4js")
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Draftable" type="Node" parent="StateMachine" index="1"]
+script = ExtResource("4_b22op")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-shape = SubResource("RectangleShape2D_q2qpe")
-
-[connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
-[connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]
+[node name="Drafted" type="Node" parent="StateMachine" index="2"]
+script = ExtResource("4_miqy1")
