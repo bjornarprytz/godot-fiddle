@@ -18,8 +18,7 @@ offset_top = 137.0
 offset_right = 958.0
 offset_bottom = 263.0
 theme = SubResource("Theme_d2aje")
-text = "- Backend in C#
-- End up with deck"
+text = "- End up with deck after 8 picks"
 
 [node name="Picks" parent="." instance=ExtResource("3_g3six")]
 

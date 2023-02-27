@@ -1,0 +1,85 @@
+[gd_scene load_steps=11 format=3 uid="uid://bbv65hfp1qvx4"]
+
+[ext_resource type="Texture2D" uid="uid://7dbbcod6ao7m" path="res://sprites/moon.png" id="1_xfqvp"]
+[ext_resource type="Shader" path="res://night_sky/cloud.gdshader" id="2_fjx33"]
+[ext_resource type="PackedScene" uid="uid://c133u2no26bpb" path="res://juice/light_source.tscn" id="2_jmpgp"]
+[ext_resource type="AudioStream" uid="uid://tliw0uh7wl0u" path="res://audio/cult_choir.mp3" id="4_ppc10"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_nk286"]
+seed = 7
+frequency = 0.002
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_nrk1l"]
+width = 1164
+height = 660
+generate_mipmaps = false
+seamless = true
+seamless_blend_skirt = 1.0
+noise = SubResource("FastNoiseLite_nk286")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_o7etc"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_hewmu"]
+seamless = true
+seamless_blend_skirt = 1.0
+noise = SubResource("FastNoiseLite_o7etc")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bkwkg"]
+shader = ExtResource("2_fjx33")
+shader_parameter/scroll = Vector2(0.8, 0.2)
+shader_parameter/speed = 0.03
+shader_parameter/brightness = 0.1
+shader_parameter/threshold = 0.1
+shader_parameter/fluffiness = 0.1
+shader_parameter/noise_tex = SubResource("NoiseTexture2D_nrk1l")
+shader_parameter/noise_tex2 = SubResource("NoiseTexture2D_hewmu")
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_hgfnk"]
+
+[node name="night_sky_main" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1152.0
+offset_bottom = -648.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Sky" type="ColorRect" parent="."]
+layout_mode = 2
+offset_left = -5.0
+offset_top = -5.0
+offset_right = 1161.0
+offset_bottom = 657.0
+color = Color(0, 0.105882, 0.105882, 1)
+
+[node name="Moon" type="Sprite2D" parent="."]
+position = Vector2(366.25, 244.25)
+scale = Vector2(0.751666, 0.751666)
+texture = ExtResource("1_xfqvp")
+
+[node name="Light" parent="Moon" instance=ExtResource("2_jmpgp")]
+position = Vector2(-4.04855, 0)
+scale = Vector2(2.79995, 2.8509)
+color = Color(0.627451, 1, 0.360784, 1)
+energy = 1.0
+
+[node name="Light2" parent="Moon" instance=ExtResource("2_jmpgp")]
+position = Vector2(-4.04855, 0)
+scale = Vector2(1.47236, 1.49915)
+color = Color(0.537255, 1, 0.513726, 1)
+energy = 1.8
+
+[node name="Clouds" type="TextureRect" parent="."]
+material = SubResource("ShaderMaterial_bkwkg")
+layout_mode = 0
+offset_left = -5.0
+offset_top = -5.0
+offset_right = 1159.0
+offset_bottom = 655.0
+texture = SubResource("CanvasTexture_hgfnk")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_ppc10")
+autoplay = true

@@ -18,17 +18,20 @@ func _ready():
 	button_tween.tween_property($Buttons, 'modulate:a', 255, 8.0)
 
 
-func _on_cards_pressed():
+func _on_cards_pressed() -> void:
 	get_tree().change_scene_to_file("res://cards/cards_main.tscn")
 
-func _on_graph_pressed():
+func _on_graph_pressed() -> void:
 	get_tree().change_scene_to_file("res://graph/graph_main.tscn")
 
-func _on_juice_pressed():
+func _on_juice_pressed() -> void:
 	get_tree().change_scene_to_file("res://juice/juice_main.tscn")
 
-func _on_crosslanguage_pressed():
+func _on_crosslanguage_pressed() -> void:
 	get_tree().change_scene_to_file("res://cross_language/cross_language_main.tscn")
 
-func _on_draft_pressed():
+func _on_draft_pressed() -> void:
 	get_tree().change_scene_to_file("res://draft/draft_main.tscn")
+
+func _on_night_sky_pressed() -> void:
+	get_tree().change_scene_to_file("res://night_sky/night_sky_main.tscn")
