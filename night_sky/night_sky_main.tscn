@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=3 uid="uid://bbv65hfp1qvx4"]
 
-[ext_resource type="Texture2D" uid="uid://7dbbcod6ao7m" path="res://sprites/moon.png" id="1_xfqvp"]
+[ext_resource type="Texture2D" uid="uid://bp6xf76yp8o7t" path="res://sprites/moon.png" id="1_xfqvp"]
 [ext_resource type="Shader" path="res://night_sky/cloud.gdshader" id="2_fjx33"]
 [ext_resource type="PackedScene" uid="uid://c133u2no26bpb" path="res://juice/light_source.tscn" id="2_jmpgp"]
 [ext_resource type="AudioStream" uid="uid://tliw0uh7wl0u" path="res://audio/cult_choir.mp3" id="4_ppc10"]
@@ -63,13 +63,13 @@ texture = ExtResource("1_xfqvp")
 position = Vector2(-4.04855, 0)
 scale = Vector2(2.79995, 2.8509)
 color = Color(0.627451, 1, 0.360784, 1)
-energy = 1.0
+energy = 0.77
 
 [node name="Light2" parent="Moon" instance=ExtResource("2_jmpgp")]
 position = Vector2(-4.04855, 0)
 scale = Vector2(1.47236, 1.49915)
 color = Color(0.537255, 1, 0.513726, 1)
-energy = 1.8
+energy = 1.51
 
 [node name="Clouds" type="TextureRect" parent="."]
 material = SubResource("ShaderMaterial_bkwkg")

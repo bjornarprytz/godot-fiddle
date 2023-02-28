@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://djslbpaxr55pk"]
+
+[ext_resource type="Script" path="res://game-root.gd" id="1_tu1n4"]
+
+[node name="GameRoot" type="Node"]
+script = ExtResource("1_tu1n4")
