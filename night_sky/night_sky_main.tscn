@@ -1,9 +1,18 @@
-[gd_scene load_steps=11 format=3 uid="uid://bbv65hfp1qvx4"]
+[gd_scene load_steps=15 format=3 uid="uid://bbv65hfp1qvx4"]
 
+[ext_resource type="Shader" path="res://night_sky/chromatic_aberration.gdshader" id="1_2fs1q"]
 [ext_resource type="Texture2D" uid="uid://bp6xf76yp8o7t" path="res://sprites/moon.png" id="1_xfqvp"]
+[ext_resource type="Texture2D" uid="uid://d38yp6axk1lef" path="res://sprites/point-light.png" id="2_bn80r"]
 [ext_resource type="Shader" path="res://night_sky/cloud.gdshader" id="2_fjx33"]
 [ext_resource type="PackedScene" uid="uid://c133u2no26bpb" path="res://juice/light_source.tscn" id="2_jmpgp"]
+[ext_resource type="Script" path="res://night_sky/moon-control.gd" id="4_6actf"]
 [ext_resource type="AudioStream" uid="uid://tliw0uh7wl0u" path="res://audio/cult_choir.mp3" id="4_ppc10"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_734kd"]
+shader = ExtResource("1_2fs1q")
+shader_parameter/apply = true
+shader_parameter/amount = 0.0
+shader_parameter/offset_texture = ExtResource("2_bn80r")
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_nk286"]
 seed = 7
@@ -55,9 +64,13 @@ offset_bottom = 657.0
 color = Color(0, 0.105882, 0.105882, 1)
 
 [node name="Moon" type="Sprite2D" parent="."]
+light_mask = 2
+material = SubResource("ShaderMaterial_734kd")
 position = Vector2(366.25, 244.25)
+rotation = -6.28319
 scale = Vector2(0.751666, 0.751666)
 texture = ExtResource("1_xfqvp")
+script = ExtResource("4_6actf")
 
 [node name="Light" parent="Moon" instance=ExtResource("2_jmpgp")]
 position = Vector2(-4.04855, 0)

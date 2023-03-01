@@ -34,4 +34,9 @@ func _on_draft_pressed() -> void:
 	get_tree().change_scene_to_file("res://draft/draft_main.tscn")
 
 func _on_night_sky_pressed() -> void:
+	var tween = create_tween().set_ease(Tween.EASE_IN)
+	await tween.tween_property($TransitionScreen, 'color:a', 1.0, 1.0).finished
 	get_tree().change_scene_to_file("res://night_sky/night_sky_main.tscn")
+
+func _on_shadows_pressed() -> void:
+	get_tree().change_scene_to_file("res://shadows/shadows_main.tscn")
