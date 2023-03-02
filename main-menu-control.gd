@@ -1,12 +1,10 @@
 extends ColorRect
 
-var tween
-
 func _ready():
 	var targetColor = Color.from_string("5384f1", Color.WHITE)
 	
 	# https://easings.net/
-	tween = create_tween()
+	var tween = create_tween()
 	
 	tween.set_ease(Tween.EASE_OUT)
 	tween.set_trans(Tween.TRANS_QUAD)

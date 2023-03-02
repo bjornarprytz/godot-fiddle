@@ -1,10 +1,11 @@
 using System;
 using Godot;
-using Range = System.Range;
+using Godot.Fiddle.CardResolver;
+using TicTacToe;
 
 public partial class DraftApi : Node
 {
-	private static string[] names = new[]
+	private static string[] names = 
 	{
 		"Frostbite Axe",
 		"Valkyrie's Aid",
@@ -39,9 +40,43 @@ public partial class DraftApi : Node
 			GD.Print($"Created card with name {names[randomIndex]}");
 
 			cards[i] = card;
-			
 		}
 
 		return cards;
+	}
+
+	public void PlayCard(GodotObject card, GodotObject enemy)
+	{
+		var rCard = new Card
+		{
+			Keyword = "Damage",
+			Strength = 69,
+		};
+
+		var rEnemy = new Enemy(enemy);
+		
+		Resolve.Card(rCard, rEnemy);
+	}
+	
+	internal class Enemy : IEnemy
+	{
+		private readonly GodotObject _enemy;
+
+		public Enemy(GodotObject enemy)
+		{
+			_enemy = enemy;
+		}
+
+		public int Health
+		{
+			get => (int) _enemy.Get("health");
+			set => _enemy.Set("health", value);
+		}
+	}
+	
+	internal class Card : ICard
+	{
+		public string Keyword { get; init; }
+		public int Strength { get; init; }
 	}
 }

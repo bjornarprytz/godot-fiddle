@@ -6,7 +6,7 @@ const speed = 200.0
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	
-	var direction : Vector2
+	var direction = Vector2(0,0)
 	
 	if Input.is_key_pressed(KEY_W):
 		direction += Vector2(0,-1)

@@ -3,4 +3,9 @@
     <TargetFramework>net6.0</TargetFramework>
     <EnableDynamicLoading>true</EnableDynamicLoading>
   </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Godot.Fiddle.CardResolver">
+      <HintPath>..\fiddle\Godot.Fiddle.CardResolver\Godot.Fiddle.CardResolver\bin\Debug\net6.0\Godot.Fiddle.CardResolver.dll</HintPath>
+    </Reference>
+  </ItemGroup>
 </Project>

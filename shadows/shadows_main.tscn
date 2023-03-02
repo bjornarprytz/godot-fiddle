@@ -1,7 +1,6 @@
-[gd_scene load_steps=8 format=3 uid="uid://c2ij714r5qdux"]
+[gd_scene load_steps=7 format=3 uid="uid://c2ij714r5qdux"]
 
 [ext_resource type="FontFile" uid="uid://cai6lldev21qc" path="res://fonts/PressStart2P/PressStart2P-Regular.ttf" id="1_0nacd"]
-[ext_resource type="Script" path="res://shadows/shadows-control.gd" id="1_2cgw0"]
 [ext_resource type="Script" path="res://shadows/ShadowPlayer.gd" id="2_julao"]
 [ext_resource type="Texture2D" uid="uid://d38yp6axk1lef" path="res://sprites/point-light.png" id="3_j355i"]
 [ext_resource type="Script" path="res://shadows/camera-control.gd" id="4_5vp52"]
@@ -13,7 +12,6 @@ default_font = ExtResource("1_0nacd")
 polygon = PackedVector2Array(6.16031, 9.33014, 44, -60, 75, 17, 0, 42)
 
 [node name="ShadowsController" type="Node"]
-script = ExtResource("1_2cgw0")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 anchors_preset = 15
