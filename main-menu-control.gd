@@ -17,7 +17,8 @@ func _ready():
 
 
 func _on_cards_pressed() -> void:
-	get_tree().change_scene_to_file("res://cards/cards_main.tscn")
+	GameRoot.load_scene(self,"res://cards/cards_main.tscn" )
+	#get_tree().change_scene_to_file("res://cards/cards_main.tscn")
 
 func _on_graph_pressed() -> void:
 	get_tree().change_scene_to_file("res://graph/graph_main.tscn")

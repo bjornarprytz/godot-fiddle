@@ -1,0 +1,19 @@
+[gd_scene load_steps=2 format=3 uid="uid://bjjevxstlxfyu"]
+
+[ext_resource type="Script" path="res://loading-screen.gd" id="1_ax87r"]
+
+[node name="LoadingScreen" type="ColorRect"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.196078, 0.196078, 0.196078, 1)
+script = ExtResource("1_ax87r")
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+layout_mode = 0
+offset_left = 378.0
+offset_top = 513.0
+offset_right = 809.0
+offset_bottom = 540.0

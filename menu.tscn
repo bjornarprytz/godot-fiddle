@@ -1,6 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://cnxiourri7wk0"]
+[gd_scene load_steps=4 format=3 uid="uid://cnxiourri7wk0"]
 
 [ext_resource type="Script" path="res://main-menu-control.gd" id="1_woxuk"]
+[ext_resource type="FontFile" uid="uid://cai6lldev21qc" path="res://fonts/PressStart2P/PressStart2P-Regular.ttf" id="2_gnkmd"]
+
+[sub_resource type="Theme" id="Theme_ri0xj"]
+default_font = ExtResource("2_gnkmd")
 
 [node name="MenuBackground" type="ColorRect"]
 anchors_preset = 15
@@ -60,6 +64,19 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 color = Color(0, 0, 0, 0)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 717.0
+offset_top = 143.0
+offset_right = 1126.0
+offset_bottom = 473.0
+theme = SubResource("Theme_ri0xj")
+text = "- Loading screen (currently, it's instant)
+- Split screen (WASD and arrow keys)
+- Save game
+- ConfigFile (High score list)
+- Settings"
 
 [connection signal="pressed" from="Buttons/Cards" to="." method="_on_cards_pressed"]
 [connection signal="pressed" from="Buttons/Graph" to="." method="_on_graph_pressed"]
