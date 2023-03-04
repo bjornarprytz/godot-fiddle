@@ -39,3 +39,6 @@ func _on_night_sky_pressed() -> void:
 
 func _on_shadows_pressed() -> void:
 	get_tree().change_scene_to_file("res://shadows/shadows_main.tscn")
+
+func _on_fight_pressed() -> void:
+	get_tree().change_scene_to_file("res://fight/fight_main.tscn")

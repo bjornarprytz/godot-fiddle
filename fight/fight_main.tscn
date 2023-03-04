@@ -1,0 +1,71 @@
+[gd_scene load_steps=10 format=3 uid="uid://bdfy2ckd2vms7"]
+
+[ext_resource type="FontFile" uid="uid://cai6lldev21qc" path="res://fonts/PressStart2P/PressStart2P-Regular.ttf" id="1_gehbq"]
+[ext_resource type="Texture2D" uid="uid://b3sndiul8jvtt" path="res://sprites/knight.png" id="2_0s07u"]
+[ext_resource type="Script" path="res://fight/Player1.gd" id="2_pqdla"]
+[ext_resource type="Script" path="res://fight/Player2.gd" id="4_7ynd3"]
+[ext_resource type="Texture2D" uid="uid://dt56seg61e3n0" path="res://sprites/wizard.png" id="5_bajlx"]
+
+[sub_resource type="Theme" id="Theme_ehe3h"]
+default_font = ExtResource("1_gehbq")
+default_font_size = 42
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bjgob"]
+size = Vector2(46, 77)
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_k3go8"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_p13n1"]
+distance = 0.01
+
+[node name="fight_main" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1152.0
+offset_bottom = -648.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+offset_left = 244.0
+offset_top = 107.0
+offset_right = 952.0
+offset_bottom = 383.0
+theme = SubResource("Theme_ehe3h")
+text = "- Split screen
+- "
+
+[node name="Player1" type="CharacterBody2D" parent="."]
+position = Vector2(276, 560)
+script = ExtResource("2_pqdla")
+
+[node name="Sprite2D" type="Sprite2D" parent="Player1"]
+position = Vector2(0, -1)
+scale = Vector2(0.185294, 0.185294)
+texture = ExtResource("2_0s07u")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player1"]
+position = Vector2(-6, 1.5)
+shape = SubResource("RectangleShape2D_bjgob")
+
+[node name="Player2" type="CharacterBody2D" parent="."]
+position = Vector2(916, 580)
+script = ExtResource("4_7ynd3")
+
+[node name="Sprite2D" type="Sprite2D" parent="Player2"]
+position = Vector2(0, -1)
+scale = Vector2(0.185294, 0.185294)
+texture = ExtResource("5_bajlx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player2"]
+position = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_bjgob")
+
+[node name="RigidBody2D" type="StaticBody2D" parent="."]
+physics_material_override = SubResource("PhysicsMaterial_k3go8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
+position = Vector2(801, 640)
+shape = SubResource("WorldBoundaryShape2D_p13n1")

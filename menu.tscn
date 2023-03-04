@@ -55,6 +55,10 @@ text = "Night Sky"
 layout_mode = 2
 text = "Shadows"
 
+[node name="Fight" type="Button" parent="Buttons"]
+layout_mode = 2
+text = "Fight"
+
 [node name="TransitionScreen" type="ColorRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
@@ -72,11 +76,12 @@ offset_top = 143.0
 offset_right = 1126.0
 offset_bottom = 473.0
 theme = SubResource("Theme_ri0xj")
-text = "- Loading screen (currently, it's instant)
-- Split screen (WASD and arrow keys)
-- Save game
+text = "- Save game
 - ConfigFile (High score list)
-- Settings"
+- Settings (Background color)
+- Event Bus (Score board)
+- Data in a CSV table
+"
 
 [connection signal="pressed" from="Buttons/Cards" to="." method="_on_cards_pressed"]
 [connection signal="pressed" from="Buttons/Graph" to="." method="_on_graph_pressed"]
@@ -85,3 +90,4 @@ text = "- Loading screen (currently, it's instant)
 [connection signal="pressed" from="Buttons/Draft" to="." method="_on_draft_pressed"]
 [connection signal="pressed" from="Buttons/NightSky" to="." method="_on_night_sky_pressed"]
 [connection signal="pressed" from="Buttons/Shadows" to="." method="_on_shadows_pressed"]
+[connection signal="pressed" from="Buttons/Fight" to="." method="_on_fight_pressed"]

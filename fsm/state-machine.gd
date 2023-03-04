@@ -14,7 +14,7 @@ var push_down = []
 
 func _ready():
 	if (!_target_node):
-		_target_node = get_parent()
+		_target_node = get_owner()
 	
 	for s in get_children():
 		_init_state(s)
