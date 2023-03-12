@@ -59,6 +59,10 @@ text = "Shadows"
 layout_mode = 2
 text = "Fight"
 
+[node name="Populous" type="Button" parent="Buttons"]
+layout_mode = 2
+text = "Populous"
+
 [node name="TransitionScreen" type="ColorRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
@@ -91,3 +95,5 @@ text = "- Save game
 [connection signal="pressed" from="Buttons/NightSky" to="." method="_on_night_sky_pressed"]
 [connection signal="pressed" from="Buttons/Shadows" to="." method="_on_shadows_pressed"]
 [connection signal="pressed" from="Buttons/Fight" to="." method="_on_fight_pressed"]
+[connection signal="pressed" from="Buttons/Populous" to="." method="_on_fight_pressed"]
+[connection signal="pressed" from="Buttons/Populous" to="." method="_on_populous_pressed"]

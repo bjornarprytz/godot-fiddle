@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://bnif4e733cgqn"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_50o12"]
+radius = 2.0
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_iv7v5"]
+radius = 4.23319
+
+[node name="CSGSphere3D" type="CSGSphere3D"]
+radius = 2.0
+radial_segments = 64
+rings = 24
+
+[node name="Surface" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Surface"]
+shape = SubResource("SphereShape3D_50o12")
+
+[node name="GravityWell" type="Area3D" parent="."]
+gravity_space_override = 3
+gravity_point = true
+gravity = 18.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="GravityWell"]
+shape = SubResource("SphereShape3D_iv7v5")

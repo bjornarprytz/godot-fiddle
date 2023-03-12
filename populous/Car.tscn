@@ -1,0 +1,48 @@
+[gd_scene load_steps=3 format=3 uid="uid://dcqgg7d3m45pa"]
+
+[ext_resource type="Script" path="res://populous/car.gd" id="1_f5ien"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4tkmv"]
+size = Vector3(0.2, 0.05, 0.1)
+
+[node name="VehicleBody3D" type="VehicleBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.30629, 0)
+script = ExtResource("1_f5ien")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0403678, 0)
+shape = SubResource("BoxShape3D_4tkmv")
+
+[node name="Hood" type="CSGBox3D" parent="."]
+size = Vector3(0.2, 0.05, 0.1)
+
+[node name="Headlights" type="SpotLight3D" parent="."]
+transform = Transform3D(-5.96046e-08, 0, -1, 0, 1, 0, 1, 0, -5.96046e-08, 0, 0, 0)
+light_energy = 10.0
+spot_angle = 69.0
+
+[node name="LB" type="VehicleWheel3D" parent="."]
+transform = Transform3D(-4.37114e-08, 7.64274e-15, 1, 1.74846e-07, 1, 0, -1, 1.74846e-07, -4.37114e-08, -0.0565258, -0.0338571, -0.0590516)
+use_as_traction = true
+wheel_radius = 0.04
+
+[node name="RB" type="VehicleWheel3D" parent="."]
+transform = Transform3D(-4.37114e-08, 7.64274e-15, 1, 1.74846e-07, 1, 0, -1, 1.74846e-07, -4.37114e-08, -0.0565258, -0.0338571, 0.0585073)
+use_as_traction = true
+wheel_radius = 0.04
+
+[node name="LF" type="VehicleWheel3D" parent="."]
+transform = Transform3D(-4.37114e-08, 7.64274e-15, 1, 1.74846e-07, 1, 0, -1, 1.74846e-07, -4.37114e-08, 0.0492674, -0.0338571, -0.0590516)
+use_as_traction = true
+wheel_radius = 0.04
+
+[node name="RF" type="VehicleWheel3D" parent="."]
+transform = Transform3D(-4.37114e-08, 7.64274e-15, 1, 1.74846e-07, 1, 0, -1, 1.74846e-07, -4.37114e-08, 0.0492674, -0.0338571, 0.0585073)
+use_as_traction = true
+wheel_radius = 0.04
+
+[node name="BackWheels" type="CSGCylinder3D" parent="."]
+transform = Transform3D(0.069, 0, 0, 0, -3.01609e-09, -0.069, 0, 0.069, -3.01609e-09, -0.0546319, -0.0364265, 0)
+
+[node name="FrontWheels" type="CSGCylinder3D" parent="."]
+transform = Transform3D(0.069, 0, 0, 0, -3.01609e-09, -0.069, 0, 0.069, -3.01609e-09, 0.0509358, -0.0364265, 0)

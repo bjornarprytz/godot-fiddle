@@ -42,3 +42,7 @@ func _on_shadows_pressed() -> void:
 
 func _on_fight_pressed() -> void:
 	get_tree().change_scene_to_file("res://fight/fight_main.tscn")
+
+
+func _on_populous_pressed() -> void:
+	GameRoot.load_scene(self,"res://populous/populous_main.tscn" )
