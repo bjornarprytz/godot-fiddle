@@ -1,25 +1,42 @@
-[gd_scene load_steps=3 format=3 uid="uid://bnif4e733cgqn"]
+[gd_scene load_steps=8 format=3 uid="uid://bnif4e733cgqn"]
+
+[ext_resource type="Shader" path="res://populous/planet.gdshader" id="1_32re3"]
+[ext_resource type="Texture2D" uid="uid://dkni1insw48i7" path="res://sprites/card-back-sprite.png" id="1_x2i8o"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_50o12"]
 radius = 2.0
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_msvuf"]
+albedo_texture = ExtResource("1_x2i8o")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4ssot"]
+render_priority = 0
+shader = ExtResource("1_32re3")
+shader_parameter/height_multiplier = 0.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_bsusn"]
+material = SubResource("ShaderMaterial_4ssot")
+radius = 2.0
+height = 4.0
+
 [sub_resource type="SphereShape3D" id="SphereShape3D_iv7v5"]
 radius = 4.23319
 
-[node name="CSGSphere3D" type="CSGSphere3D"]
-radius = 2.0
-radial_segments = 64
-rings = 24
+[node name="Surface" type="StaticBody3D"]
 
-[node name="Surface" type="StaticBody3D" parent="."]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Surface"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("SphereShape3D_50o12")
+
+[node name="Planet" type="MeshInstance3D" parent="."]
+material_override = SubResource("StandardMaterial3D_msvuf")
+mesh = SubResource("SphereMesh_bsusn")
 
 [node name="GravityWell" type="Area3D" parent="."]
 gravity_space_override = 3
 gravity_point = true
-gravity = 18.0
+gravity_point_center = Vector3(0, 0, 0)
+gravity_direction = Vector3(0, 0, 0)
+gravity = 5.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="GravityWell"]
 shape = SubResource("SphereShape3D_iv7v5")

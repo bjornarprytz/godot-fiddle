@@ -1,18 +1,55 @@
-[gd_scene load_steps=4 format=3 uid="uid://c1jlivoxf16yl"]
+[gd_scene load_steps=7 format=3 uid="uid://c1jlivoxf16yl"]
 
 [ext_resource type="Script" path="res://populous/populous_main.gd" id="1_grx3d"]
 [ext_resource type="PackedScene" uid="uid://bnif4e733cgqn" path="res://populous/planet.tscn" id="2_vnlde"]
-[ext_resource type="PackedScene" uid="uid://dcqgg7d3m45pa" path="res://populous/Car.tscn" id="3_01npj"]
+[ext_resource type="Script" path="res://populous/player.gd" id="3_elvmk"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_esqa1"]
+size = Vector3(0.5, 0.5, 0.5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_scl6x"]
+albedo_color = Color(0, 1, 1, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_yhhqt"]
+material = SubResource("StandardMaterial3D_scl6x")
+size = Vector3(0.5, 0.5, 0.5)
 
 [node name="populous" type="Node3D"]
 script = ExtResource("1_grx3d")
 
 [node name="Planet" parent="." instance=ExtResource("2_vnlde")]
 
-[node name="Car" parent="." instance=ExtResource("3_01npj")]
+[node name="Player" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.70508, 1.98926, 0)
+max_contacts_reported = 1
+contact_monitor = true
+script = ExtResource("3_elvmk")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Player"]
+shape = SubResource("BoxShape3D_esqa1")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Player"]
+mesh = SubResource("BoxMesh_yhhqt")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0548124, 0, 9.82403)
+light_energy = 16.0
+spot_range = 122.039
+spot_angle = 22.35
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.953517, 0.301338, 0, -0.301338, 0.953517, 0, 2.77088, 3.64143)
 
 [node name="SpotLight3D" type="SpotLight3D" parent="Camera3D"]
 spot_angle = 10.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Camera3D"]
+offset_left = 61.0
+offset_top = 454.0
+offset_right = 423.0
+offset_bottom = 609.0
+text = "- Planet
+	- Height map
+	- Water, mountains
+- Starry skybox
+- Camera movement around the planet"
