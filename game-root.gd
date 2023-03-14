@@ -15,11 +15,11 @@ func load_scene(current_scene : Node, next_scene_path : String):
 	
 	var progress = []
 	
-	var result = await ResourceLoader.load_threaded_get_status(next_scene_path, progress)
+	var result = ResourceLoader.load_threaded_get_status(next_scene_path, progress)
 	
 	while result == ResourceLoader.THREAD_LOAD_IN_PROGRESS:
 		loading_screen_instance.update_progress(progress[0])
-		result = await ResourceLoader.load_threaded_get_status(next_scene_path, progress)
+		result = ResourceLoader.load_threaded_get_status(next_scene_path, progress)
 	
 	if (result == ResourceLoader.THREAD_LOAD_LOADED):
 		var next_scene = ResourceLoader.load_threaded_get(next_scene_path)

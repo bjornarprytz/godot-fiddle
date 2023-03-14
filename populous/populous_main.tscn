@@ -1,49 +1,41 @@
-[gd_scene load_steps=7 format=3 uid="uid://c1jlivoxf16yl"]
+[gd_scene load_steps=9 format=3 uid="uid://c1jlivoxf16yl"]
 
 [ext_resource type="Script" path="res://populous/populous_main.gd" id="1_grx3d"]
 [ext_resource type="PackedScene" uid="uid://bnif4e733cgqn" path="res://populous/planet.tscn" id="2_vnlde"]
-[ext_resource type="Script" path="res://populous/player.gd" id="3_elvmk"]
+[ext_resource type="PackedScene" uid="uid://b0q73773n22to" path="res://populous/player.tscn" id="3_mnexy"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_esqa1"]
-size = Vector3(0.5, 0.5, 0.5)
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_xro4n"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_scl6x"]
-albedo_color = Color(0, 1, 1, 1)
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_v1l75"]
+friction = 0.5
+bounce = 0.4
 
-[sub_resource type="BoxMesh" id="BoxMesh_yhhqt"]
-material = SubResource("StandardMaterial3D_scl6x")
-size = Vector3(0.5, 0.5, 0.5)
+[sub_resource type="Sky" id="Sky_qr4uh"]
+radiance_size = 0
+
+[sub_resource type="Environment" id="Environment_b6qyi"]
+background_mode = 2
+sky = SubResource("Sky_qr4uh")
+
+[sub_resource type="CameraAttributesPhysical" id="CameraAttributesPhysical_jfnds"]
 
 [node name="populous" type="Node3D"]
 script = ExtResource("1_grx3d")
 
 [node name="Planet" parent="." instance=ExtResource("2_vnlde")]
+physics_material_override = SubResource("PhysicsMaterial_xro4n")
 
-[node name="Player" type="RigidBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.70508, 1.98926, 0)
-max_contacts_reported = 1
-contact_monitor = true
-script = ExtResource("3_elvmk")
+[node name="Player" parent="." instance=ExtResource("3_mnexy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.157279, 0.164066, 27.3051)
+physics_material_override = SubResource("PhysicsMaterial_v1l75")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Player"]
-shape = SubResource("BoxShape3D_esqa1")
+[node name="Camera3D" type="Camera3D" parent="Player"]
+transform = Transform3D(-4.37114e-08, 0.0442818, -0.999019, 1, 1.93562e-09, -4.36685e-08, 0, -0.999019, -0.0442818, -4.01359, -0.12397, -0.271624)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Player"]
-mesh = SubResource("BoxMesh_yhhqt")
-
-[node name="SpotLight3D" type="SpotLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0548124, 0, 9.82403)
-light_energy = 16.0
-spot_range = 122.039
-spot_angle = 22.35
-
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.953517, 0.301338, 0, -0.301338, 0.953517, 0, 2.77088, 3.64143)
-
-[node name="SpotLight3D" type="SpotLight3D" parent="Camera3D"]
+[node name="SpotLight3D" type="SpotLight3D" parent="Player/Camera3D"]
 spot_angle = 10.0
 
-[node name="RichTextLabel" type="RichTextLabel" parent="Camera3D"]
+[node name="RichTextLabel" type="RichTextLabel" parent="Player/Camera3D"]
 offset_left = 61.0
 offset_top = 454.0
 offset_right = 423.0
@@ -53,3 +45,13 @@ text = "- Planet
 	- Water, mountains
 - Starry skybox
 - Camera movement around the planet"
+
+[node name="Sun" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0548124, 25.8753, 1264.93)
+light_energy = 16.0
+spot_range = 5000.0
+spot_angle = 4.0
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_b6qyi")
+camera_attributes = SubResource("CameraAttributesPhysical_jfnds")

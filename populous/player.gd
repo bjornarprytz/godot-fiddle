@@ -1,20 +1,18 @@
 extends RigidBody3D
 
 
-const SPEED = 5.0
+const SPEED = 25.0
 const JUMP_VELOCITY = 4.5
-const rotation_speed = 1.0
+const rotation_speed = 8.0
 
 var _should_reset : bool = false
-var _start_position : Vector3 = Vector3(0,0,0)
-var local_gravity : Vector3 = Vector3(0,0,0)
-var _move_direction : Vector3 = Vector3(0,0,0)
-var _last_strong_direction : Vector3 = Vector3(0,0,0)
+var _start_position : Vector3 = Vector3.ZERO
+var local_gravity : Vector3 = Vector3.DOWN
+var _move_direction : Vector3 = Vector3.ZERO
+var _last_strong_direction : Vector3 = Vector3.FORWARD
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
-
-
 
 func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
 	if _should_reset:
@@ -44,6 +42,7 @@ func _get_model_oriented_input() -> Vector3:
 	
 	var raw_input = Vector2(input_left_right, input_forward)
 	
+	
 	var input := Vector3.ZERO
 	
 	# This ensures correct analogue input strength in any direction with joypad stick
@@ -58,7 +57,9 @@ func _orient_character_to_direction(direction: Vector3, delta: float):
 	var left_axis := -local_gravity.cross(direction)
 	var rotation_basis := Basis(left_axis, -local_gravity, direction).orthonormalized()
 	
-	# TODO: Fix this function
+	transform.basis = transform.basis.orthonormalized().slerp(
+		rotation_basis, delta * rotation_speed
+	)
 	
 func _is_on_floor(state: PhysicsDirectBodyState3D) -> bool:
 	for contact in state.get_contact_count():

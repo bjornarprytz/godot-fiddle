@@ -1,0 +1,29 @@
+[gd_scene load_steps=6 format=3 uid="uid://b0q73773n22to"]
+
+[ext_resource type="Script" path="res://populous/player.gd" id="1_7hxia"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_l6r1n"]
+friction = 0.0
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_esqa1"]
+size = Vector3(0.5, 0.5, 0.5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_scl6x"]
+albedo_color = Color(0, 1, 1, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_yhhqt"]
+material = SubResource("StandardMaterial3D_scl6x")
+size = Vector3(0.5, 0.5, 0.5)
+
+[node name="Player" type="RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.70508, 1.98926, 0)
+physics_material_override = SubResource("PhysicsMaterial_l6r1n")
+max_contacts_reported = 1
+contact_monitor = true
+script = ExtResource("1_7hxia")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_esqa1")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_yhhqt")
