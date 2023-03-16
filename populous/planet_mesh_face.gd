@@ -27,6 +27,7 @@ func regenerate_mesh(planet_data : PlanetData):
 	var tri_index : int = 0
 	var axisA := Vector3(normal.y, normal.z, normal.x)
 	var axisB : Vector3 = normal.cross(axisA)
+	var l : float = 0
 	
 	for y in resolution:
 		for x in resolution:
@@ -36,6 +37,14 @@ func regenerate_mesh(planet_data : PlanetData):
 			var pointOnUnitSphere : Vector3 = pointOnUnitCube.normalized()
 			var pointOnPlanet = planet_data.point_on_planet(pointOnUnitSphere)
 			vertex_array[i] = pointOnPlanet
+			
+			l = pointOnPlanet.length()
+			if l < planet_data.min_height:
+				planet_data.min_height = l
+			if l > planet_data.max_height:
+				planet_data.max_height = l
+			
+			
 			if (x != resolution-1 and y != resolution-1):
 				index_array[tri_index+2] = i
 				index_array[tri_index+1] = i + resolution +1
@@ -67,10 +76,14 @@ func regenerate_mesh(planet_data : PlanetData):
 	arrays[Mesh.ARRAY_TEX_UV] = uv_array
 	arrays[Mesh.ARRAY_INDEX] = index_array
 	
-	call_deferred("_update_mesh", arrays)
+	_update_mesh.call_deferred(arrays, planet_data)
 	
-func _update_mesh(arrays: Array):
+func _update_mesh(arrays: Array, planet_data: PlanetData):
 	var _mesh := ArrayMesh.new()
 	_mesh.add_surface_from_arrays(Mesh.PRIMITIVE_TRIANGLES, arrays)
 	
 	self.mesh = _mesh
+	
+	material_override.set_shader_param("min_height", planet_data.min_height)
+	material_override.set_shader_param("max_height", planet_data.max_height)
+	material_override.set_shader_param("height_color", planet_data.planet_color)

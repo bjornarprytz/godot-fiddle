@@ -3,6 +3,27 @@ extends Resource
 
 class_name PlanetData
 
+## Defines the planet's surface level
+@export var planet_noise : Array[PlanetNoise] :
+	get:
+		return planet_noise
+	set(value):
+		planet_noise = value
+		changed.emit()
+		for n in planet_noise:
+			if n != null and not n.changed.is_connected(_on_data_changed):
+				n.changed.connect(_on_data_changed)
+
+## Defines the color on different heights
+@export var planet_color : GradientTexture1D :
+	get:
+		return planet_color
+	set(value):
+		planet_color = value
+		changed.emit()
+		if planet_color != null and not planet_color.changed.is_connected(_on_data_changed):
+			planet_color.changed.connect(_on_data_changed)
+
 ## Radius of the planet
 @export var radius : float = 1.0 :
 	get:
@@ -19,17 +40,8 @@ class_name PlanetData
 		resolution = value
 		changed.emit()
 
-## Defines the planet's surface
-@export var planet_noise : Array[PlanetNoise] :
-	get:
-		return planet_noise
-	set(value):
-		planet_noise = value
-		changed.emit()
-		for n in planet_noise:
-			if n != null and not n.changed.is_connected(_on_data_changed):
-				n.changed.connect(_on_data_changed)
-				print("Connected n and ondatachange")
+var min_height : float = 99999.0 
+var max_height : float = 0.0
 
 		
 func point_on_planet(point_on_sphere : Vector3) -> Vector3:
@@ -51,4 +63,6 @@ func point_on_planet(point_on_sphere : Vector3) -> Vector3:
 	
 
 func _on_data_changed():
+	min_height = 99999.0 
+	max_height = 0.0
 	changed.emit()
