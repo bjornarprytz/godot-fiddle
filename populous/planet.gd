@@ -9,7 +9,8 @@ extends Node3D
 		if planet_data != null and not planet_data.changed.is_connected(on_data_changed):
 			planet_data.changed.connect(on_data_changed)
 
-# Called when the node enters the scene tree for the first time.
+var _timer : Timer
+
 func _ready() -> void:
 	on_data_changed()
 
