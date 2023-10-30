@@ -7,3 +7,4 @@
 script = ExtResource("1_t4the")
 
 [node name="CardView" parent="." instance=ExtResource("2_evtnl")]
+move_scale = 100.0
