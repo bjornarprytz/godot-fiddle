@@ -63,6 +63,14 @@ text = "Fight"
 layout_mode = 2
 text = "Populous"
 
+[node name="Watercolor" type="Button" parent="Buttons"]
+layout_mode = 2
+text = "Watercolor"
+
+[node name="MapDeck" type="Button" parent="Buttons"]
+layout_mode = 2
+text = "Watercolor"
+
 [node name="TransitionScreen" type="ColorRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
@@ -95,5 +103,6 @@ text = "- Save game
 [connection signal="pressed" from="Buttons/NightSky" to="." method="_on_night_sky_pressed"]
 [connection signal="pressed" from="Buttons/Shadows" to="." method="_on_shadows_pressed"]
 [connection signal="pressed" from="Buttons/Fight" to="." method="_on_fight_pressed"]
-[connection signal="pressed" from="Buttons/Populous" to="." method="_on_fight_pressed"]
 [connection signal="pressed" from="Buttons/Populous" to="." method="_on_populous_pressed"]
+[connection signal="pressed" from="Buttons/Watercolor" to="." method="_on_watercolor_pressed"]
+[connection signal="pressed" from="Buttons/MapDeck" to="." method="_on_map_deck_pressed"]

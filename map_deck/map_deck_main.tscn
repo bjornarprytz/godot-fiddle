@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://bodiq5c267uhs"]
+
+[ext_resource type="Script" path="res://map_deck/map_deck_main.gd" id="1_t4the"]
+[ext_resource type="PackedScene" uid="uid://kscf6s0sytyv" path="res://map_deck/card_view.tscn" id="2_evtnl"]
+
+[node name="map_deck_main" type="Node2D"]
+script = ExtResource("1_t4the")
+
+[node name="CardView" parent="." instance=ExtResource("2_evtnl")]

@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://bdkixufpgylwd"]
+
+[ext_resource type="Script" path="res://map_deck/card_sub_scene.gd" id="1_eadkn"]
+[ext_resource type="Texture2D" uid="uid://chgubpy5j4un8" path="res://sprites/button.png" id="1_u63n8"]
+
+[node name="SubScene" type="Node2D"]
+script = ExtResource("1_eadkn")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+editor_draw_screen = false
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -752.0
+offset_top = -758.0
+offset_right = 757.0
+offset_bottom = 751.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_u63n8")

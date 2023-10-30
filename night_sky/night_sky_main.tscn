@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://bbv65hfp1qvx4"]
+[gd_scene load_steps=21 format=3 uid="uid://bbv65hfp1qvx4"]
 
 [ext_resource type="Shader" path="res://night_sky/chromatic_aberration.gdshader" id="1_2fs1q"]
 [ext_resource type="Shader" path="res://night_sky/gradient.gdshader" id="1_bm0k2"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://c133u2no26bpb" path="res://juice/light_source.tscn" id="2_jmpgp"]
 [ext_resource type="Script" path="res://night_sky/moon-control.gd" id="4_6actf"]
 [ext_resource type="AudioStream" uid="uid://tliw0uh7wl0u" path="res://audio/cult_choir.mp3" id="4_ppc10"]
+[ext_resource type="Shader" path="res://night_sky/lino_dither.gdshader" id="8_c30h6"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_eeq7g"]
 shader = ExtResource("1_bm0k2")
@@ -48,6 +49,19 @@ shader_parameter/noise_tex = SubResource("NoiseTexture2D_nrk1l")
 shader_parameter/noise_tex2 = SubResource("NoiseTexture2D_hewmu")
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_hgfnk"]
+
+[sub_resource type="Gradient" id="Gradient_eunmi"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_e3o8r"]
+gradient = SubResource("Gradient_eunmi")
+width = 2
+height = 2
+fill_from = Vector2(0.470085, 0.435897)
+fill_to = Vector2(1, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vh8i5"]
+shader = ExtResource("8_c30h6")
+shader_parameter/bayer_matrix = SubResource("GradientTexture2D_e3o8r")
 
 [node name="night_sky_main" type="Control"]
 layout_mode = 3
@@ -97,6 +111,17 @@ offset_top = -5.0
 offset_right = 1159.0
 offset_bottom = 655.0
 texture = SubResource("CanvasTexture_hgfnk")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="LinoScreen" type="ColorRect" parent="CanvasLayer"]
+modulate = Color(0, 0, 0, 0.0196078)
+material = SubResource("ShaderMaterial_vh8i5")
+offset_left = -5.0
+offset_top = -5.0
+offset_right = 1161.0
+offset_bottom = 657.0
+color = Color(0.462745, 0.32549, 0.352941, 0.396078)
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_ppc10")

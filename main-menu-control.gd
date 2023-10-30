@@ -46,3 +46,9 @@ func _on_fight_pressed() -> void:
 
 func _on_populous_pressed() -> void:
 	GameRoot.load_scene(self,"res://populous/populous_main.tscn" )
+
+func _on_watercolor_pressed() -> void:
+	get_tree().change_scene_to_file("res://watercolor/watercolor_main.tscn")
+
+func _on_map_deck_pressed() -> void:
+	get_tree().change_scene_to_file("res://map_deck/map_deck_main.tscn")

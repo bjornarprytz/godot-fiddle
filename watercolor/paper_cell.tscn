@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://vpu1yedu3ij2"]
+
+[ext_resource type="Texture2D" uid="uid://b7rvmanw11lhm" path="res://sprites/white-square.png" id="1_se7eg"]
+[ext_resource type="Script" path="res://watercolor/paper_cell.gd" id="2_illqg"]
+
+[node name="paper_cell" type="Sprite2D"]
+texture = ExtResource("1_se7eg")
+centered = false
+script = ExtResource("2_illqg")
